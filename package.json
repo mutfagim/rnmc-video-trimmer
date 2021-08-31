@@ -1,0 +1,20 @@
+{
+  "name": "rnmc-video-trimmer",
+  "version": "0.0.1",
+  "description": "Mutfagim Team Video Editor",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "video-editor",
+    "react-native",
+    "mutfagim"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mutfagim/rnmc-video-trimmer.git"
+  },
+  "author": "Mutfagim",
+  "license": "MIT"
+}
