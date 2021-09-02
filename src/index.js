@@ -40,13 +40,14 @@ import {
 const {
     width
 } = Dimensions.get("window");
-const minSpaceSecond = 10;
-const maxSpaceSecond = 300;
-const handlerSize = 8;
 
 const Trimmer = ({
     handlerColor = "#FFCA39",
+    maxSpaceSecond = 300,
+    minSpaceSecond = 10,
     framesImages = [],
+    handlerSize = 8,
+    timeStapsStyle,
     zoomValue = 0,
     rightPosition,
     onChangeEvent,
@@ -371,10 +372,13 @@ const Trimmer = ({
             style={timeStapStyles.container}
         >
             <Text
-                style={{
-                    fontSize: isMinute ? 10 : 8,
-                    bottom: isMinute ? 3 : 0
-                }}
+                style={[
+                    {
+                        fontSize: isMinute ? 10 : 8,
+                        bottom: isMinute ? 3 : 0
+                    },
+                    timeStapsStyle
+                ]}
                 key={index}
             >
                 {item}
