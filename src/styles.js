@@ -19,7 +19,6 @@ export const styles = StyleSheet.create({
         height: 30
     },
     trackContainer: {
-        backgroundColor: "rgba(0,0,0,0.3)",
         marginTop: 10,
         height: 100
     },
