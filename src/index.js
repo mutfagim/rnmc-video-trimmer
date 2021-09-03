@@ -55,6 +55,8 @@ const Trimmer = ({
     setPositions,
     leftPosition,
     padding = 10,
+    radius = 8,
+
 }, ref) => {
     const [times, setTimes] = useState([]);
     const [remainingTimesPadding, setRemainingTimesPadding] = useState(0);
@@ -357,10 +359,14 @@ const Trimmer = ({
         left: lineX
     };
     const leftMaskTransformStyle = {
+        borderBottomLeftRadius: radius,
+        borderTopLeftRadius: radius,
         width: leftMaskWidth,
         left: leftMaskX,
     };
     const rightMaskTransformStyle = {
+        borderBottomRightRadius: radius,
+        borderTopRightRadius: radius,
         width: rightMaskWidth,
         left: rightMaskX
     };
@@ -395,6 +401,16 @@ const Trimmer = ({
     }), [times]);
 
     const framesMap = useMemo(() => _framesImages.map((item, index) => {
+        const isHaveLeftRadius = index === 0;
+        const isHaveRightRadius = index === _framesImages.length - 1;
+
+        const imageStyle = {
+            borderBottomRightRadius: isHaveRightRadius ? radius : 0,
+            borderBottomLeftRadius: isHaveLeftRadius ? radius : 0,
+            borderTopRightRadius: isHaveRightRadius ? radius : 0,
+            borderTopLeftRadius: isHaveLeftRadius ? radius : 0,
+            width: fullWidth / _framesImages.length,
+        };
         return <View
             key={index + "FramesImage"}
         >
@@ -404,9 +420,7 @@ const Trimmer = ({
                 }}
                 style={[
                     styles.frameImage,
-                    {
-                        width: fullWidth / _framesImages.length,
-                    }
+                    imageStyle
                 ]}
             />
         </View>
@@ -416,6 +430,7 @@ const Trimmer = ({
         style={styles.container}
     >
         <ScrollView
+            showsHorizontalScrollIndicator={false}
             contentContainerStyle={[
                 styles.scrollViewContentContainer,
                 {
